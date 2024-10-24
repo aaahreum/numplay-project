@@ -19,25 +19,51 @@ public class GameLogic {
         }
 
         answerNumbers = new ArrayList<>(randomNumber);
+
+//        System.out.println("answerNumbers = " + Arrays.deepToString(answerNumbers.toArray()));
     }
 
     public void play() {
         Scanner sc = new Scanner(System.in);
+        System.out.println();
         System.out.println("< 게임을 시작합니다. >");
 
         while (true) {
-            System.out.println();
-            System.out.println("숫자를 입력하세요.");
+//            System.out.println();
+//            System.out.println("숫자를 입력하세요.");
             List<String> inputNumberList;
             Set<String> inputNumberSet = new LinkedHashSet<>();
 
-            while (inputNumberSet.size() < 3) {
+            while (true) {
+                System.out.println();
+                System.out.println("숫자를 입력하세요.");
                 inputNumberSet.clear();
                 String inputNumbers = sc.next();
+                if(inputNumbers.length() != 3){
+                    System.out.println("세자리 수만 입력 가능합니다.");
+                    continue;
+                }
+                boolean isDigit = true;
                 for (int i = 0; i < inputNumbers.length(); i++) {
                     char ch = inputNumbers.charAt(i);
+                    if(!Character.isDigit(ch)){
+                        // ch가 숫자가 아닌 경우
+                        isDigit = false;
+                        break;
+                    }
                     String number = Character.toString(ch);
                     inputNumberSet.add(number);
+                }
+                if(!isDigit){
+                    System.out.println("입력값에 숫자만 포함되어야 합니다.");
+                    continue;
+                }
+                if(inputNumberSet.size() < 3){
+                    System.out.println("중복된 숫자가 있습니다. 다시 입력하세요.");
+                    continue;
+                }
+                if(inputNumberSet.size() == 3){
+                    break;
                 }
             }
             inputNumberList = new ArrayList<>(inputNumberSet);
@@ -78,9 +104,10 @@ public class GameLogic {
 
             if (strike == 3) {
                 System.out.println("정답입니다!");
+                System.out.println();
                 break;
             }
         }
-        sc.close();
+
     }
 }
