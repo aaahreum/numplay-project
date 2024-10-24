@@ -23,8 +23,10 @@ public class GameLogic {
 
     public void play() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("< 게임을 시작합니다. >");
 
         while (true) {
+            System.out.println();
             System.out.println("숫자를 입력하세요.");
             List<String> inputNumberList;
             Set<String> inputNumberSet = new LinkedHashSet<>();
@@ -73,7 +75,6 @@ public class GameLogic {
             if (strike == 0 && ball == 0) {
                 System.out.println("아웃");
             }
-
 
             if (strike == 3) {
                 System.out.println("정답입니다!");
