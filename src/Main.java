@@ -5,6 +5,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        /**
+         * 사용자가 선택할 수 있는 옵션을 출력합니다.
+         * 사용자가 게임 실행과 종료를 선택할 수 있도록 합니다.
+         */
         while(true) {
             System.out.println("환영합니다! 원하시는 번호를 입력해주세요");
             System.out.println("1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기");
